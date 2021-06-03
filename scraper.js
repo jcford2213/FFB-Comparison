@@ -7,7 +7,14 @@ request(siteURL, (err, res, html) => {
   if (err) throw err;
   if (res.statusCode == 200) {
     const $ = cheerio.load(html);
-    const playerName = $("h1[itemprop='name']")
-    console.log(playerName.text());
-  }
+    const playerName = $("div[itemtype='https://schema.org/Person'] > *")
+    playerName.each( (i, elem) =>{
+      const element = $(elem).text();
+      const string = element.replace(/\s/g, "");
+      playerArray.push(string);
+    });
+    
+    const playerJSON = JSON.stringify(playerArray);
+    console.log(playerJSON);
+  };
 });
