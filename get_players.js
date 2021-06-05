@@ -17,28 +17,38 @@ const request = require('request');
 const cheerio = require('cheerio');
 const fs = require('fs');
 
+// Leads to 2020 player fantasy data
 const siteURL = 'https://www.pro-football-reference.com/years/2020/fantasy.htm';
 
-
+// Players object
 const players2020 = {}
+
+// Get the html
 request(siteURL, (err, res, html) => {
   if (err) throw err;
 
   if (res.statusCode == 200) {
+    // Parse html with Cheerio
     const $ = cheerio.load(html);
 
+    // Select the player hyperlink from the fantasy rankings table
     const playerPath = $('#fantasy  tbody tr td[data-stat="player"] a');
+    // Each hyperlink yeilds a path and a player name
     playerPath.each( (i, elem) => {
-      player = $(elem).text()
       path = $(elem)
         .attr('href')
         .replace(/(?:\/players\/)/, '')
         .replace(/(?:\.htm)/, '');
-      
+      player = $(elem).text()
+      // Add the player path and player name to the Players object
       players2020[`${path}`] = player;
     });
+
+    // Turns players object to a JSON string
     const playersJSON = JSON.stringify(players2020);
     console.log(playersJSON);
+
+    // Writes the players JSON string to players.json file
     fs.writeFile('players.json', playersJSON, (err) => {
       if (err) throw err;
       console.log('players.json SAVED!');
