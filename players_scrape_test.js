@@ -1,14 +1,17 @@
 /*
-NFL Stat Scraper -- Jack Doyle, TE, Indianapolis Colts
+NFL Stat Scraper Test
 
 Author: Jackson Crantford (Idiotic Marlin)
 
-Node.js using Request and Cheerio modules
+Node.js using Axios and Cheerio modules
 
-Last Update: 6/5/2921 - 11:28 am
+Last Update: 7/7/2021
 
-AS of last update - This scrapes Jack Doyle player information and career statistics from his profile page on Pro Football Reference
-The program logs 3 JSON objects to the console; Doyle's basic profile, stat headers, and career stats.
+AS of last update - Using Axios, this program gets the html from pro-football-reference.com/players/[player key]
+Player Key is the unique identifier given to each player by PFR. 
+This program tests 4 players listed in test_Players, one of each playing position (Qb, Rb, Wr, Te)
+Using cheerio for each html page this program scrapes the player's profile information and respective 2020 stats.
+The program then ultimately assembles these data into an object that is converted to JSON and saved to a file 'test_player_stats.json'
 */
 
 // || Dependencies ||
@@ -32,19 +35,19 @@ let jsonContainer = [];
 // || Functions ||
 
 /* Asynchronous Function. Requests html from Player's PFR page.
-* Runs getPlayerProfile and getPlayerStats functions
 */
-
 const main = async () => {
   await getAllPlayerInfo(paths)
-  .then(console.log('BETWEEN AXIOS AND FS'))
+  .then(console.log('BETWEEN AXIOS AND FS')) // Used to see where the execution is taking place
   .then(saveJsonObject(jsonContainer))
   .catch(err => {
     console.log(err);
   });
 }
 
-
+/* 
+* Runs getPlayerProfile and getPlayerStats functions
+*/
 const getAllPlayerInfo =  async path => {
   path.forEach(async path => {
     const axiosResponse = await axios.get(`${pfrDomain}${path}.htm`);  // Request html from pfr
@@ -183,7 +186,7 @@ const getPlayerStats = (axiosConn, position) => {
   return playerStatsObject;
 }
 
-
+// Saves the final object to a json file
 const saveJsonObject = async (containerObject) => {
   fs.writeFile('test_player_stats.json', JSON.stringify(containerObject), err => {
     if (err) {
