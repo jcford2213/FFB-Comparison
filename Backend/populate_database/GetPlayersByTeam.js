@@ -22,11 +22,11 @@ const teamAbbrv = require ('./ApiObjects.js');
 let team = teamAbbrv[13];
 getPlayerByTeam(team);
 
-teamAbbrv.forEach(team => {
+// teamAbbrv.forEach(team => {
   
-  getPlayerByTeam(team);
+//   getPlayerByTeam(team);
  
-});
+// });
 
 // FUNCTIONS
 
@@ -66,25 +66,37 @@ function getPlayerByTeam(team) {
                   results.forEach(obj => {  // Each column's field name is selected and added to the container
                     let field = Object.values(obj);
                     playerFieldHeaders.push(field[0]);
-                    console.log(playerFieldHeaders);
                     return playerFieldHeaders
                   });
                 }
+                const dataObject = JSON.parse(data);
+                const dataKeys = Object.values(dataObject);
+                const testArray = playerFieldHeaders.map(word => word.toLowerCase());
+                
+                dataKeys.forEach(value =>{
+                  let keys = Object.keys(value);
+                  let player = {};
+                  keys.forEach(key => {
+                    
+                    if (testArray.includes(key.toLowerCase())) {
+                      player[key] = value[key];
+                    }
+                   
+                  });
+                  // conn.query() // write insert queries here
+                    
+                });
+                 
+                  //console.log(Object.keys(value)[0]);
             });
+                    
             conn.end();
           }
       });
         
-      const dataObject = JSON.parse(data);
-      console.log('Data is of type: ' + typeof dataJson);
-      
-      const dataKeys = Object.keys(dataObject);
-      console.log(dataObject);
-      //dataKeys.forEach(key =>{
-    });
       
   }).on("error", (err) => {   // Catch error and log it in console
     console.log("Error: " + err.message);
   });
-
+  });
 }
