@@ -22,18 +22,18 @@ const teamAbbrv = require ('./ApiObjects.js');
 let team = teamAbbrv[13];
 getPlayerByTeam(team);
 
-/*teamAbbrv.forEach(team => {
+teamAbbrv.forEach(team => {
   
   getPlayerByTeam(team);
  
-});*/
+});
 
 // FUNCTIONS
 
 // Function gets player information by team
 function getPlayerByTeam(team) {
   
-  var sdioOptions = {   // SportDataIO (sdio) url destination (host & path) and API Key (headers)
+  const sdioOptions = {   // SportDataIO (sdio) url destination (host & path) and API Key (headers)
     host: 'api.sportsdata.io',
     path: '/v3/nfl/scores/json/Players/' + team,  // Gets player info by team
     headers: {'Ocp-Apim-Subscription-Key': 'e3d1821e0d254cf48477554b14281734'}
@@ -52,7 +52,9 @@ function getPlayerByTeam(team) {
 
     resp.on('data', (chunk) => {  // collects data as it filters in and adds to data container
       data += chunk;
-      
+    });
+
+    resp.on('end', () => {
       conn.connect((err) => {   // Connect to huddleupdata database
         if (err) {console.log('Error: Failed to connect to DB: ' + err);}
           else {  
@@ -72,19 +74,17 @@ function getPlayerByTeam(team) {
             conn.end();
           }
       });
-     
-    });
-
-    resp.on('end', () => {
-      //const dataObject = JSON.parse(data);
-      //console.log('Data is of type: ' + typeof dataJson);
+        
+      const dataObject = JSON.parse(data);
+      console.log('Data is of type: ' + typeof dataJson);
       
-      //const dataKeys = Object.keys(dataObject);
+      const dataKeys = Object.keys(dataObject);
+      console.log(dataObject);
       //dataKeys.forEach(key =>{
-      });
+    });
       
   }).on("error", (err) => {   // Catch error and log it in console
     console.log("Error: " + err.message);
-  });*/
+  });
 
 }
