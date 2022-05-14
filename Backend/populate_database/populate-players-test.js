@@ -20,9 +20,11 @@ const mysql = require('mysql');
 //    MAIN
 
 const conn = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'MyNewPass'
+  host: '50.87.222.126',
+  database: 'bubingaw_footballdata',
+  user: 'bubingaw_jcrantfo',
+  password: 'gIalloR0ssi1*',
+  port: '3306'
 });
 
 conn.connect((err) => {
@@ -30,3 +32,4 @@ conn.connect((err) => {
     else {console.log('Connection to DB Successful');}
 });
 
+conn.end();
