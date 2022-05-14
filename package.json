@@ -1,0 +1,25 @@
+{
+  "name": "ffb-comparison",
+  "version": "0.0.1",
+  "description": "Fantasy Football Calculator and Resource",
+  "main": "app.js",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "node": "^17.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IdioticMarlin22/FFB-Comparison.git"
+  },
+  "author": "Jackson Crantford, Peyton Crantford",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/IdioticMarlin22/FFB-Comparison/issues"
+  },
+  "homepage": "https://github.com/IdioticMarlin22/FFB-Comparison#readme"
+}
