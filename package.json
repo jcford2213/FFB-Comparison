@@ -1,16 +1,10 @@
 {
-  "name": "ffb-comparison",
+  "name": "huddle-calculator",
   "version": "0.0.1",
-  "description": "Fantasy Football Calculator and Resource",
+  "description": "Fantasy Football Trade Calculator and Resource",
   "main": "app.js",
-  "dependencies": {
-    "mysql": "^2.18.1",
-    "node": "^17.7.2"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -21,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/IdioticMarlin22/FFB-Comparison/issues"
   },
-  "homepage": "https://github.com/IdioticMarlin22/FFB-Comparison#readme"
+  "homepage": "https://github.com/IdioticMarlin22/FFB-Comparison#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1",
+    "node": "^17.7.2",
+    "nodemon": "^2.0.16",
+    "path": "^0.12.7"
+  }
 }

@@ -2,6 +2,10 @@
 
 This web application is a fantasy football trade calculator and fantasy resource. 
 
+## Terminal
+
+
+
 ## Server
 
 Language: Node.js
