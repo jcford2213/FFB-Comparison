@@ -1,6 +1,18 @@
 <%- include('./_header.ejs') -%>
 
-  <h1>Huddle Calculator</h1>
   <h2>Trade Calculator</h2>
+
+  <div id="team1" name="team1">
+    <h3>Team One</h3>
+    <label for="team1Player1">Search Player</label>
+    <input type="text" id="team1Player1" name="team1Player1"><br><br>
+  </div>
+  <div id="team2" name="team2">
+    <h3>Team Two</h3>
+    <label for="team2Player1">Search Player</label>
+    <input type="text" id="team2Player1" name="team2Player1"><br><br>
+  </div>
+  <button type="button" id="tradeFormButton" name="tradeFormButton">Analyze Trade</button>
+ 
 
 <%- include('./_footer.ejs') -%>
