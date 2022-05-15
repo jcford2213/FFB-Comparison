@@ -2,6 +2,7 @@
 
 This web application is a fantasy football trade calculator and fantasy resource. 
 
+
 ## Terminal
 
 Most useful terminal commands
@@ -34,6 +35,7 @@ CHANGE DIRECTORY: cd /folderName
   -This command changes the working directory to the selected folder
   -There are more ways to manipulate the current working directory with the "cd" command
 
+
 ## Server
 
 Language: Node.js
@@ -42,10 +44,9 @@ Source Program: app.js
 
 TO OPEN WEBPAGE IN BROWSER
   -Run app.js
-    -Terminal command from /FFB-Comparison: npx nodemon
+    -Terminal command from working directory /FFB-Comparison: npx nodemon
   -Open your browser
   -In address field type url: localhost:3000
-
 
 
 ## Database
