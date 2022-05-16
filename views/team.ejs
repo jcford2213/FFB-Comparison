@@ -4,9 +4,13 @@
 
   <label for="teamSearch">Select Team</label>
   <select id="teamSearch" name="teamSearch">
-    <option></option>
+    <% Object.keys(teams).forEach(team => { %>
+      <option><%= teams.team %></option>
+    <% }) %>
   </select>
   <table id="teamTable" name="teamTable">
   </table>
+
+  
 
 <%- include('./_footer.ejs') -%>
