@@ -1,3 +1,5 @@
+const https = require('https');
+
 exports.teams =  () =>{
   const teams = {
     "ARI": 'Arizona Cardinals', "ATL": "Atlanta Falcons", "BAL": "Baltimore Ravens",
@@ -13,4 +15,28 @@ exports.teams =  () =>{
     "TEN": "Tennessee Titans", "WAS": "Washing Commanders"
   };
   return teams;
+};
+
+exports.getTeamData = (teamID) => {
+  const sdioOptions = {   // SportDataIO (sdio) url destination (host & path) and API Key (headers)
+    host: 'api.sportsdata.io',
+    path: '/v3/nfl/stats/json/PlayerSeasonStatsByTeam/2021/' + teamID,  // Gets player info by team
+    headers: {'Ocp-Apim-Subscription-Key': 'e3d1821e0d254cf48477554b14281734'}
+  };
+
+  https.get(sdioOptions, resp => {
+    let data = '';    // container for incomming data
+
+    resp.on('data', (chunk) => {  // collects data as it filters in and adds to data container
+      data += chunk;
+    });
+
+    resp.on('end', () => {
+      data = JSON.parse(data);
+      return data;
+    });
+    console.log(data);
+  })
+  
+  console.log('this is the getTeamData function');
 };

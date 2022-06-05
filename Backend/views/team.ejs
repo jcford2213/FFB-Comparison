@@ -5,12 +5,12 @@
   <label id="lbl_teamSelect" for="teamSelect">Select Team</label>
   <select id="teamSelect" name="teamSelect">
     <% Object.keys(teams).forEach(team => { %>
-      <option><%= teams[team] %></option>
+      <option class="teamOptions" id=<%= team %>><%= teams[team] %></option>
     <% }) %>
   </select>
   <table id="teamTable" name="teamTable">
   </table>
 
-  
+  <script src="js/teamScript.js"></script>
 
 <%- include('./_footer.ejs') -%>
