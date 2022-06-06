@@ -1,28 +1,19 @@
 {
-  "name": "huddle-calculator",
-  "version": "0.0.1",
-  "description": "Fantasy Football Trade Calculator and Resource",
+  "name": "Fantasy Football Resource",
+  "version": "0.0.2",
+  "description": "Improvements on architecture, addition of React and Bootstrap",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IdioticMarlin22/FFB-Comparison.git"
-  },
-  "author": "Jackson Crantford, Peyton Crantford",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/IdioticMarlin22/FFB-Comparison/issues"
-  },
-  "homepage": "https://github.com/IdioticMarlin22/FFB-Comparison#readme",
+  "keywords": [],
+  "author": "Jackson Crantford",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.0",
-    "ejs": "^3.1.8",
     "express": "^4.18.1",
-    "mysql": "^2.18.1",
-    "node": "^17.7.2",
-    "nodemon": "^2.0.16",
-    "path": "^0.12.7"
+    "fetch": "^1.1.0",
+    "nodemon": "^2.0.16"
   }
 }
